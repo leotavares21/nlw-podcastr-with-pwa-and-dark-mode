@@ -1,0 +1,220 @@
+.playerContainer {
+  padding: 3rem 4rem;
+  width: 26.5rem;
+  height: 100vh;
+
+  background: var(--purple-500);
+  color: var(--white);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  > button {
+    position: fixed;
+    background: transparent;
+    border: none;
+    display: none;
+    background: var(--purple-500);
+
+    padding: 0.6rem 0.5rem 0;
+    top: 1.20rem;
+    right: 0;
+
+    > img {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    @media (max-width: 800px) {
+      display: block;
+    }
+  }
+
+  @media (max-width: 1280px) {
+    width: 21rem;
+    padding: 1.5rem 2rem;
+  }
+
+  @media (max-width: 800px) {
+    position: fixed;
+
+    transition: right 0.3s;
+    width: 50vw;
+    right: -100%;
+
+    z-index: 10;
+
+    justify-content: space-evenly;
+    &.isActive {
+      right: 0;
+    }
+  }
+
+  @media (max-width: 700px) {
+    width: 70vw;
+  }
+
+
+  @media (max-width: 400px) {
+    padding: 0.75rem;
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    @media (max-width: 800px) {
+      width: 100%;
+      justify-content: flex-start;
+    }
+  }
+
+  strong {
+    font-family: Lexend, sans-serif;
+    font-weight: 600;
+  }
+
+  footer {
+    align-self: stretch;
+    &.empty .progress {
+      opacity: 0.5;
+    }
+  }
+}
+
+.currentEpisode {
+  text-align: center;
+
+  img {
+    border-radius: 1.5rem;
+
+    @media (max-width: 500px){
+      max-height: 6rem;
+    }
+  }
+
+  strong {
+    display: flex;
+    margin-top: 2rem;
+    font: 600 1.25rem Lexend, sans-serif;
+    line-height: 1.75rem;
+  }
+
+  span {
+    display: block;
+    margin-top: 1rem;
+    opacity: 0.6;
+    line-height: 1.5rem;
+  }
+}
+
+.emptyPlayer {
+  width: 100%;
+  height: 20rem;
+  border: 1.5px dashed var(--purple-300);
+  border-radius: 1.5rem;
+  background: linear-gradient(
+    143.8deg,
+    rgba(145, 100, 250, 0.8) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+
+  padding: 4rem;
+  text-align: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 460px) {
+    padding: 2rem;
+    height: 10rem;
+  }
+}
+
+.progress {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+
+  span {
+    display: inline-block;
+    width: 4rem;
+    text-align: center;
+  }
+
+  .slider {
+    flex: 1;
+
+    .emptySlider {
+      width: 100%;
+      height: 4px;
+      background: var(--purple-300);
+      border-radius: 2px;
+    }
+  }
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2.5rem;
+  gap: 1.5rem;
+
+  @media (max-width: 600px) {
+    margin-top: 1rem;
+  }
+
+  @media (max-width: 460px) {
+    gap: 0.825rem;
+  }
+
+  button {
+    background: transparent;
+    border: 0;
+    font-size: 0;
+
+    transition: filter 0.2s;
+
+    &:disabled {
+      cursor: default;
+      opacity: 0.5;
+    }
+
+    &:hover:not(:disabled) {
+      filter: brightness(0.7);
+    }
+
+    &.isActive {
+      // hackzinho para mudar a cor da img tag
+      filter: invert(0.35) sepia(1) saturate(3) hue-rotate(100deg);
+    }
+
+    &.isActive:hover {
+      filter: brightness(0.6) invert(0.35) sepia(1) saturate(3)
+        hue-rotate(100deg);
+    }
+
+    &.playButton {
+      width: 4rem;
+      height: 4rem;
+      border-radius: 1rem;
+      background: var(--purple-400);
+
+      &:hover:not(:disabled) {
+        filter: brightness(0.95);
+      }
+
+      @media (max-width: 460px) {
+        width: 2rem;
+        height: 2rem;
+        border-radius: 0.5rem;
+      }
+    }
+  }
+}
